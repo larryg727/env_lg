@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include "env_lg.h"
 
+void usage(char *progname);
+
 int main(int argc, char **argv)
 {
     char *progname = argv[0];

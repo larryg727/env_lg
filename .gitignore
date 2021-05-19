@@ -1,3 +1,5 @@
 env_lg
+env_lg_debug
+env_lg_debug.dSYM
 .vscode/
 tests/run_tests
