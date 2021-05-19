@@ -9,15 +9,15 @@ int main(int argc, char **argv)
 {
     char *progname = argv[0];
     boolean has_command = argc > 1;
-    int idx = 1;
-    char *env_var;
-    int opt;
-    const char options[] = "h";
+    int idx = 1;     /* Tracks index of arguments that are processed */
+    char *env_var;   /* Temp variable to hold passed in env varialbs as they are found */
+    int opt;         /* Temp variable to hold passed in option flags as they are found */
+    const char options[] = "h"; /* List of accepted option flags */
 
+    /*  parse option flags */
     while ((opt=getopt(argc, argv, options)) != -1)
     {
         idx++;
-        /* Switch used to enable future flags to be added.  */
         switch (opt)
         {
             case 'h':
@@ -32,6 +32,7 @@ int main(int argc, char **argv)
         }
     }
 
+    /* parse environment variables */
     while (idx < argc && (env_var = strchr(argv[idx], '=')))
     {
         if (strchr(argv[idx], '='))
@@ -40,6 +41,7 @@ int main(int argc, char **argv)
             idx++;
         }
     }
+    
     if (!has_command || !argv[idx])
         return list_current_envs();
     else if (has_command && idx > 1)

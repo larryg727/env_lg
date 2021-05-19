@@ -25,7 +25,7 @@ int set_env(char *env_var)
     return 0;
 }
 
-/* Runs specified command/program in new process */
+/* Runs specified command/program */
 int execute_command(char *command, char **arguments)
 {
     execvp(command, arguments);

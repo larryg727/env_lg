@@ -15,12 +15,12 @@ static char *test_set_env()
     return 0;
 }
 
-// The execvp function in execute_command will take over process
-// This does not allow tests to continue.
+/* The execvp function in execute_command will take over process
+    which does not allow tests to continue. */
 // static char *test_execute_command()
 // {
-//     char *args_list[] = {"./nonexistant", NULL};
-//     int exitcode = execute_command("./nonexistant", args_list);
+//     char *args_list[] = {"ls", "-l", NULL};
+//     int exitcode = execute_command("ls", args_list);
 //     mu_assert("Error: command not executed", exitcode = 0);
 //     return 0;
 // }
