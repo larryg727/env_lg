@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 #include "minunit.h"
 #include "../env_lg.h"
 
@@ -11,7 +12,7 @@ static char *test_set_env()
 {
     set_env("TEST=PASSING");
     char *env_var = getenv("TEST");
-    mu_assert("Error; variable NOT added to environment", env_var = "PASSING");
+    mu_assert("Error; variable NOT added to environment", !strcmp(env_var, "PASSING"));
     return 0;
 }
 
@@ -21,7 +22,7 @@ static char *test_set_env()
 // {
 //     char *args_list[] = {"ls", "-l", NULL};
 //     int exitcode = execute_command("ls", args_list);
-//     mu_assert("Error: command not executed", exitcode = 0);
+//     mu_assert("Error: command not executed", exitcode == 0);
 //     return 0;
 // }
 
