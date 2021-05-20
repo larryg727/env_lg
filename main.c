@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     if (!has_command || !argv[idx])
         return list_current_envs();
     else if (has_command && idx > 1)
-        return execute_command(argv[idx], &argv[idx + 1]);
+        return execute_command(argv[idx], &argv[idx]);
     else
         usage(progname);
     return 0;
