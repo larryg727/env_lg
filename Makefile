@@ -1,4 +1,6 @@
-C11_FLAGS=-std=c11 -Wall -Wextra -Wpedantic
+.POSIX:
+
+C11_FLAGS=-D_DEFAULT_SOURCE -std=c11 -Wall -Wextra -Wpedantic
 
 build: main.c functions.c
 	cc -o env_lg main.c functions.c $(C11_FLAGS)

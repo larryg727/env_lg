@@ -5,16 +5,17 @@
 #include <stdlib.h>
 #include "env_lg.h"
 
-extern int putenv(char *string);
+extern char **environ;
 
 /* Prints the current environment.  */
 int list_current_envs()
 {
-    extern char **environ;
     char **envs = environ;
 
     for (; *envs; envs++)
+    {
         printf("%s\n", *envs);
+    }
     return 0;
 }
 
@@ -32,4 +33,10 @@ int execute_command(char *command, char **arguments)
     int errcode = errno;
     err(errcode, "%s", command);
     return errcode;
+}
+
+/* Sets current environment to null */
+void clear_environment() {
+    char *empty_environment[] = { NULL };
+    environ = empty_environment;
 }
